@@ -1,0 +1,19 @@
+{% for type, flashMessages in app.session.flashbag.all() %}
+    {% for flashMessage in flashMessages %}
+        {% if flashMessage is not empty %}
+            <div class="alert alert-info" role="alert">
+                <strong>Message: </strong>
+                {{ flashMessage|trans }}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+{% if error is defined and error != "" %}
+    <div class="alert alert-info" role="alert">
+        <strong>Error:</strong>
+        {{ error|trans({}, 'messages') }}
+    </div>
+{% endif %}
+
+
